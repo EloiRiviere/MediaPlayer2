@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+
+
+<!-- <AnchorPane fx:id="borderPane" fx:controller="launch.Main">
+
+</AnchorPane> -->
+
+
+
+
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" fx:controller="launch.Main" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <BorderPane>
+            <center>
+                <MenuBar>
+                    <menus>
+                        <Menu text="Navigation">
+                            <items>
+                                <MenuItem text="Accueil" />
+                            </items>
+                        </Menu>
+                        <Menu fx:id="gestionMusique" text="Gestion Musiques" onAction='#gestionM'>
+                            <items>
+                                <MenuItem  text="Ajouter une musique" id="addMusique"/>
+                            </items>
+                            <items>
+                                <MenuItem text="Supprimer une musique" />
+                            </items>
+                        </Menu>
+                        <Menu text="Gestion Album/Artiste">
+                            <items>
+                                <MenuItem text="Ajouter un album" />
+                            </items>
+                            <items>
+                                <MenuItem text="Ajouter un artiste" />
+                            </items>
+                        </Menu>                                                                        
+                    </menus>
+               <padding>
+                  <Insets top="8.0" />
+               </padding>
+                </MenuBar>
+            </center>
+            <right>
+                <ToolBar>
+                    <items>
+                        <TextField fx:id="barRecherche" />
+                        <Button text="Rechercher" />
+                    </items>
+                </ToolBar>
+            </right>
+        </BorderPane>
+    </top>
+    <left>
+        <VBox>
+            <ComboBox prefHeight="28.0" prefWidth="111.0" promptText="Catégorie">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Artiste" />
+                        <String fx:value="Album" />
+                        <String fx:value="Titre" />
+                    </FXCollections>
+                </items>
+            <VBox.margin>
+               <Insets bottom="10.0" left="50.0" top="15.0" />
+            </VBox.margin>  
+            </ComboBox>
+            <ListView fx:id="listView" prefHeight="318.0" prefWidth="248.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Musique 1" />
+                        <String fx:value="Musique 2" />
+                        <String fx:value="Musique 3" />
+                        <String fx:value="Artiste 1" />
+                        <String fx:value="Artiste 2" />
+                        <String fx:value="Artiste 3" />
+                        <String fx:value="Album 1" />
+                        <String fx:value="Album 2" />
+                        <String fx:value="Album 3" />
+                    </FXCollections>
+                </items>
+            </ListView>
+        </VBox>
+    </left>
+</BorderPane>
