@@ -37,7 +37,7 @@ public class Main extends Application {
     @FXML
     public void gestionM (ActionEvent event) throws Exception {
        // Stage stage1 = new Stage();
-        AnchorPane root2  = FXMLLoader.load(this.getClass().getClassLoader().getResource("ressources/ajouterMusique.fxml"));
+        BorderPane root2  = FXMLLoader.load(this.getClass().getClassLoader().getResource("ressources/ajouterMusique.fxml"));
         Stage stage1 = new Stage();
         stage1.setScene(new Scene(root2,400,400));
         stage1.setTitle("Ajouter une musique");
