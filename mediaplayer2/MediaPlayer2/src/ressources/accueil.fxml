@@ -15,15 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 
 
-
-
-<!-- <AnchorPane fx:id="borderPane" fx:controller="launch.Main">
-
-</AnchorPane> -->
-
-
-
-
 <BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" fx:controller="launch.Main" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <BorderPane>
