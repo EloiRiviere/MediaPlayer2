@@ -2,10 +2,10 @@
  * Empty Stylesheet file.
  */
 
-#AnchorPane
+#BorderPane
 {
-    /*-fx-background-image: url("/image/andromede.jpg");
-    -fx-background-size: contain;
+   /* -fx-background-image: url("/image/andromede.jpg");
+    -fx-background-size: cover;
     -fx-background-repeat: stretch;
     -fx-background-position: center center;*/
     /*-fx-background-color:#3A88C6;*/

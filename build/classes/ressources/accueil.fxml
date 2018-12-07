@@ -9,13 +9,19 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" fx:controller="launch.Main" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launch.Main">
     <top>
         <BorderPane>
             <center>
@@ -26,9 +32,9 @@
                                 <MenuItem text="Accueil" />
                             </items>
                         </Menu>
-                        <Menu fx:id="gestionMusique" text="Gestion Musiques" onAction='#gestionM'>
+                        <Menu fx:id="gestionMusique" onAction="#gestionM" text="Gestion Musiques">
                             <items>
-                                <MenuItem  text="Ajouter une musique" id="addMusique"/>
+                                <MenuItem id="addMusique" text="Ajouter une musique" />
                             </items>
                             <items>
                                 <MenuItem text="Supprimer une musique" />
@@ -89,4 +95,55 @@
             </ListView>
         </VBox>
     </left>
+    <bottom>
+        <GridPane gridLinesVisible="false">
+            <rowConstraints>
+                <RowConstraints percentHeight="50" />
+                <RowConstraints percentHeight="50" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+            <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Slider fx:id="progression" prefHeight="20" prefWidth="550" />
+            </HBox>
+            <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Button fx:id="prec">
+                    <graphic>
+                        <ImageView fitHeight="48" fitWidth="48">
+                            <Image url="/image/prec.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="pause">
+                    <graphic>
+                        <ImageView fitHeight="48" fitWidth="48">
+                            <Image url="/image/pause.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="play">
+                    <graphic>
+                        <ImageView fitHeight="48" fitWidth="48">
+                            <Image url="/image/play.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="suiv">
+                    <graphic>
+                        <ImageView fitHeight="48" fitWidth="48">
+                            <Image url="/image/suiv.png" />
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Slider fx:id="volume" />
+            </HBox>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+        </GridPane>
+    </bottom>
 </BorderPane>

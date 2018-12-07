@@ -22,7 +22,7 @@ public class Main extends Application {
         BorderPane root = FXMLLoader.load(this.getClass().getClassLoader().getResource("ressources/accueil.fxml"));
         root.getStylesheets().add(getClass().getResource("/ressources/style.css").toExternalForm());
 
-        primaryStage.setScene(new Scene(root,750,600));
+        primaryStage.setScene(new Scene(root,1200,700));
         primaryStage.show();
         
     }
