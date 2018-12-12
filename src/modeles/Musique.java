@@ -5,37 +5,34 @@
  */
 package modeles;
 
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author eloir
  */
 public class Musique
 {
-    String titre;
-    float duree;
-    
+    private final StringProperty titre = new SimpleStringProperty();
+        public String getTitre() {return titre.get();}
+        public void setTitre(String titre) {this.titre.set(titre);}
+        public StringProperty titreProperty(){return titre;}
+        
+   private final FloatProperty duree = new SimpleFloatProperty();
+        public float getDuree() {return duree.get();}
+        public void setDuree(float duree) {this.duree.set(duree);}
+        public FloatProperty dureeProperty(){return duree;}
+        
+           
     public Musique(String titre, float duree)
     {
         setTitre(titre);
         setDuree(duree);
     }
 
-    public String getTitre() {
-        return titre;
-    }
-
-    public float getDuree() {
-        return duree;
-    }
-
-    private void setTitre(String titre) {
-        this.titre = titre;
-    }
-
-    private void setDuree(float duree) {
-        this.duree = duree;
-    }
-    
     @Override
     
     public String toString()

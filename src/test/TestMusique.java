@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import modeles.Album;
 import modeles.Artiste;
 import modeles.Musique;
@@ -16,6 +18,16 @@ import modeles.Musique;
  */
 public class TestMusique
 {
+    private final ObjectProperty<Musique> mesMusiques = new SimpleObjectProperty<>(new Musique("Ties That Bind",3.19f));
+        public final Musique getMusique(){return mesMusiques.get();}
+        public final void setMusique(Musique value) {mesMusiques.set(value);}
+        public ObjectProperty<Musique> mesMusiquesProperty() {return mesMusiques;}
+    
+    
+    
+    
+    
+    
     Artiste alter_bridge = new Artiste("Alter Bridge");
     Album blackbird = new Album("Blackbird",alter_bridge,2007);
     List<Musique> musiques = new ArrayList<Musique>()
