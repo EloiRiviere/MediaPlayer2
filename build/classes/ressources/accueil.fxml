@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -26,17 +21,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import launch.Main?>
-
-<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launch.Main">
+<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launch.Main">
     <top>
         <BorderPane>
             <center>
-                <MenuBar prefHeight="45.0" prefWidth="298.0">
+                <MenuBar>
                     <menus>
                         <Menu text="Navigation">
                             <items>
-                                <MenuItem text="Accueil"/>
+                                <MenuItem text="Accueil" />
                             </items>
                         </Menu>
                         <Menu fx:id="gestionMusique" onAction="#gestionM" text="Gestion Musiques">
@@ -62,7 +55,7 @@
                 </MenuBar>
             </center>
             <right>
-                <ToolBar style="-fx-background-color: black;">
+                <ToolBar>
                     <items>
                         <TextField fx:id="barRecherche" />
                         <Button text="Rechercher" />
@@ -71,35 +64,30 @@
             </right>
         </BorderPane>
     </top>
-
     <left>
         <VBox>
-            <Button onAction="#comboBox" text="Menu" />
-            <ListView fx:id="listView" items="${Main.ListViewMusique}" prefWidth="250">
+            <!-- <ComboBox prefHeight="28.0" onAction="#comboBox" prefWidth="111.0" promptText="Catégorie">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Artiste" />
+                        <String fx:value="Album" />
+                        <String fx:value="Titre" />
+                    </FXCollections>
+                </items>
+            <VBox.margin>
+               <Insets bottom="10.0" left="50.0" top="15.0" />
+            </VBox.margin>  
+            </ComboBox> -->
+            <Button text="oauis" onAction="#comboBox"/>
+            <ListView fx:id="listView" prefHeight="318.0" prefWidth="248.0" items="${Main.listViewM}">
                 <items>
                     
                 </items>
             </ListView>
         </VBox>
     </left>
-
-    <right>
-        <GridPane fx:id="paneMusic" prefWidth="Infinity">
-            <rowConstraints>
-                <RowConstraints percentHeight="50" />
-                <RowConstraints percentHeight="50" />
-            </rowConstraints>
-            <columnConstraints>
-                <ColumnConstraints percentWidth="100" />
-            </columnConstraints>
-            <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <Slider prefHeight="20" prefWidth="550"/>
-            </HBox>
-        </GridPane>
-    </right>
-
     <bottom>
-        <GridPane fx:id="sliderPane" gridLinesVisible="false">
+        <GridPane gridLinesVisible="false">
             <rowConstraints>
                 <RowConstraints percentHeight="50" />
                 <RowConstraints percentHeight="50" />
@@ -108,9 +96,9 @@
                 <ColumnConstraints percentWidth="100" />
             </columnConstraints>
             <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <Slider fx:id="progression" prefHeight="20" prefWidth="550"/>
+                <Slider fx:id="progression" prefHeight="20" prefWidth="550" />
             </HBox>
-            <HBox alignment="CENTER" style="-fx-background-color: black;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1">
                 <Button fx:id="prec">
                     <graphic>
                         <ImageView fitHeight="48" fitWidth="48">
@@ -139,10 +127,9 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Slider fx:id="volume" />
+                <Slider fx:id="volume"/>
             </HBox>
          <columnConstraints>
-            <ColumnConstraints />
             <ColumnConstraints />
             <ColumnConstraints />
             <ColumnConstraints />

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_mediaplayer2" default="compile.module.mediaplayer2">
+  <dirname property="module.mediaplayer2.basedir" file="${ant.file.module_mediaplayer2}"/>
+  
+  <property name="module.jdk.home.mediaplayer2" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.mediaplayer2" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.mediaplayer2" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.mediaplayer2" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="mediaplayer2.output.dir" value="${module.mediaplayer2.basedir}/out/production/mediaplayer2"/>
+  <property name="mediaplayer2.testoutput.dir" value="${module.mediaplayer2.basedir}/out/test/mediaplayer2"/>
+  
+  <path id="mediaplayer2.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="mediaplayer2.module.production.classpath">
+    <path refid="${module.jdk.classpath.mediaplayer2}"/>
+  </path>
+  
+  <path id="mediaplayer2.runtime.production.module.classpath">
+    <pathelement location="${mediaplayer2.output.dir}"/>
+  </path>
+  
+  <path id="mediaplayer2.module.classpath">
+    <path refid="${module.jdk.classpath.mediaplayer2}"/>
+    <pathelement location="${mediaplayer2.output.dir}"/>
+  </path>
+  
+  <path id="mediaplayer2.runtime.module.classpath">
+    <pathelement location="${mediaplayer2.testoutput.dir}"/>
+    <pathelement location="${mediaplayer2.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.mediaplayer2">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.mediaplayer2">
+    <patternset refid="excluded.from.module.mediaplayer2"/>
+  </patternset>
+  
+  <path id="mediaplayer2.module.sourcepath">
+    <dirset dir="${module.mediaplayer2.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.mediaplayer2" depends="compile.module.mediaplayer2.production,compile.module.mediaplayer2.tests" description="Compile module mediaplayer2"/>
+  
+  <target name="compile.module.mediaplayer2.production" depends="register.custom.compilers" description="Compile module mediaplayer2; production classes">
+    <mkdir dir="${mediaplayer2.output.dir}"/>
+    <javac2 destdir="${mediaplayer2.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.mediaplayer2}/javac">
+      <compilerarg line="${compiler.args.mediaplayer2}"/>
+      <bootclasspath refid="mediaplayer2.module.bootclasspath"/>
+      <classpath refid="mediaplayer2.module.production.classpath"/>
+      <src refid="mediaplayer2.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.mediaplayer2"/>
+    </javac2>
+    
+    <copy todir="${mediaplayer2.output.dir}">
+      <fileset dir="${module.mediaplayer2.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.mediaplayer2.tests" depends="register.custom.compilers,compile.module.mediaplayer2.production" description="compile module mediaplayer2; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.mediaplayer2" description="cleanup module">
+    <delete dir="${mediaplayer2.output.dir}"/>
+    <delete dir="${mediaplayer2.testoutput.dir}"/>
+  </target>
+</project>
