@@ -13,24 +13,25 @@
 
 .menu-bar
 {
-    -fx-background-color:seagreen;
+    -fx-background-color:black;
 }
 
 .menu
 {
-    -rtfx-background-color: seagreen;
+    -fx-background-color: seagreen;
     -fx-accent: mediumseagreen;
     -fx-focus-color: mediumseagreen;
     -fx-focus-background-color:seagreen;
 }
 
 .menu .label{
+    -fx-background-color: seagreen;
     -fx-text-fill: black;
 }
 
 .menu-item
 {
-    -rtfx-background-color: seagreen;
+    -fx-background-color: seagreen;
     -fx-accent: mediumseagreen;
     -fx-focus-color: mediumseagreen;
     -fx-focus-background-color:seagreen;

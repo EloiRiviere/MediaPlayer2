@@ -28,11 +28,11 @@
 
 <?import launch.Main?>
 
-<BorderPane id="BorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="launch.Main">
+<BorderPane id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.Controleur">
     <top>
         <BorderPane>
             <center>
-                <MenuBar prefHeight="45.0" prefWidth="298.0">
+                <MenuBar prefHeight="45.0" prefWidth="298.0" >
                     <menus>
                         <Menu text="Navigation">
                             <items>
@@ -75,7 +75,7 @@
     <left>
         <VBox>
             <Button onAction="#comboBox" text="Menu" />
-            <ListView fx:id="listView" items="${Main.ListViewMusique}" prefWidth="250">
+            <ListView fx:id="listView" items="${Controleur.ListViewMusique}" prefWidth="250">
                 <items>
                     
                 </items>

@@ -6,9 +6,11 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
@@ -35,32 +37,8 @@ public class Main extends Application
 
         primaryStage.setScene(new Scene(root,1200,700));
         primaryStage.show();
-    }
-    
-   
-    @FXML
-    public void gestionM (ActionEvent event) throws Exception
-    {
-       // Stage stage1 = new Stage();
-        BorderPane root2  = FXMLLoader.load(this.getClass().getClassLoader().getResource("ressources/ajouterMusique.fxml"));
-        Stage stage1 = new Stage();
-        stage1.setScene(new Scene(root2,400,400));
-        stage1.setTitle("Ajouter une musique");
-        stage1.show();
-    }
-    
-    private ObservableList<Musique>liMusique= FXCollections.observableArrayList();
-    private final ListProperty <Musique> liMusiqueP=new SimpleListProperty<>(liMusique);
 
-    @FXML
-    private List<Album> Mediatheque = TestMusique.getMediatheque();
-    public ObservableList<Album> listeViewMusique = FXCollections.observableArrayList(Mediatheque);
-
-    @FXML
-    public void comboBox (ActionEvent event) throws Exception
-    {
-        System.out.println(liMusiqueP);
-    }
+}
     
     /**
      * @param args the command line arguments
