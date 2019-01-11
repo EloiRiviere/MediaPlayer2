@@ -13,14 +13,15 @@
 
 .menu-bar
 {
-    -fx-background-color:black;
+    -fx-background-color:seagreen;
 }
 
 .menu
 {
-    -fx-background-color: seagreen;
+    -rtfx-background-color: seagreen;
     -fx-accent: mediumseagreen;
     -fx-focus-color: mediumseagreen;
+    -fx-focus-background-color:seagreen;
 }
 
 .menu .label{
@@ -29,9 +30,11 @@
 
 .menu-item
 {
-    -fx-background-color: seagreen;
+    -rtfx-background-color: seagreen;
     -fx-accent: mediumseagreen;
     -fx-focus-color: mediumseagreen;
+    -fx-focus-background-color:seagreen;
+
 }
 
 #barRecherche
