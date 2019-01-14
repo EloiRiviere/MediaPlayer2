@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-
-<?import launch.Main?>
 
 <BorderPane id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.Controleur">
     <top>
-        <BorderPane>
+        <BorderPane id="bptop">
             <center>
                 <MenuBar prefHeight="45.0" prefWidth="298.0" >
                     <menus>
@@ -62,10 +39,12 @@
                 </MenuBar>
             </center>
             <right>
+
                 <ToolBar style="-fx-background-color: black;">
                     <items>
                         <TextField fx:id="barRecherche" />
                         <Button text="Rechercher" />
+                        <!--<Button text="Menu" onAction="#initList"/>-->
                     </items>
                 </ToolBar>
             </right>
@@ -73,11 +52,10 @@
     </top>
 
     <left>
-        <!--<Button onAction="#comboBox" text="Menu" />-->
-        <ListView fx:id="listViewL" items="${Controleur.ListViewMusique}" prefWidth="250">
-            <items>
-                    
-            </items>
+
+        <ListView fx:id="listViewL" prefWidth="250">
+
+
         </ListView>
     </left>
 

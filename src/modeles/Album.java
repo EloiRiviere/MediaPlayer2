@@ -40,6 +40,10 @@ public class Album
     public int getAnnee() {
         return annee;
     }
+
+    public List<Musique> getPistes() {return pistes;}
+
+
     
     public void ajouterPiste(Musique musique)
     {
@@ -80,8 +84,8 @@ public class Album
     
     public String toString()
     {
-        String desc = "Nom: "+getNom()+"\nArtiste: "+artiste+"\nAnnée: "+annee+"\nPistes:\n  ";
-        for (Musique m : pistes)
+        String desc = "Nom: "+getNom()+"\nArtiste: "+getArtiste()+"\nAnnée: "+getAnnee()+"\nPistes:\n  ";
+        for (Musique m : getPistes())
         {
             desc = desc+m+"\n  ";
         }

@@ -56,7 +56,7 @@ public class TestMusique
             }
         };
         blackbird.setAllPistes((ArrayList)blackbird_musiques);
-        System.out.println(blackbird);
+//        System.out.println(blackbird);
 
 
 
@@ -77,8 +77,8 @@ public class TestMusique
                 add(new Musique("Can't Get You Out of ...Head", 4.04f));
             }
         };
-        blackbird.setAllPistes((ArrayList)mount_the_mountain_musiques);
-        System.out.println(blackbird);
+        mount_the_mountain.setAllPistes((ArrayList)mount_the_mountain_musiques);
+//        System.out.println(mount_the_mountain);
 
         Mediatheque.add(blackbird);
         Mediatheque.add(mount_the_mountain);

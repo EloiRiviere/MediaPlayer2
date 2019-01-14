@@ -6,10 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author leo
- */
 public class Main extends Application
 {
     @Override
