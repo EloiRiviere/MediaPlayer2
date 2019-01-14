@@ -73,18 +73,16 @@
     </top>
 
     <left>
-        <VBox>
-            <Button onAction="#comboBox" text="Menu" />
-            <ListView fx:id="listView" items="${Controleur.ListViewMusique}" prefWidth="250">
-                <items>
+        <!--<Button onAction="#comboBox" text="Menu" />-->
+        <ListView fx:id="listViewL" items="${Controleur.ListViewMusique}" prefWidth="250">
+            <items>
                     
-                </items>
-            </ListView>
-        </VBox>
+            </items>
+        </ListView>
     </left>
 
     <right>
-        <GridPane fx:id="paneMusic" prefWidth="Infinity">
+        <GridPane fx:id="paneMusicR" prefWidth="Infinity">
             <rowConstraints>
                 <RowConstraints percentHeight="50" />
                 <RowConstraints percentHeight="50" />
@@ -99,7 +97,7 @@
     </right>
 
     <bottom>
-        <GridPane fx:id="sliderPane" gridLinesVisible="false">
+        <GridPane fx:id="sliderPaneB" gridLinesVisible="false">
             <rowConstraints>
                 <RowConstraints percentHeight="50" />
                 <RowConstraints percentHeight="50" />
