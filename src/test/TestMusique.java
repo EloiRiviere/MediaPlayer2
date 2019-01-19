@@ -1,10 +1,10 @@
 package test;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+
 import modeles.Album;
 import modeles.Artiste;
 import modeles.Musique;

@@ -9,9 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import java.util.List;
+
 import modeles.Album;
 import test.TestMusique;
-import java.util.List;
 
 public class Controleur
 {
@@ -21,7 +22,7 @@ public class Controleur
         BorderPane root2  = FXMLLoader.load(this.getClass().getClassLoader().getResource("ressources/ajouterMusique.fxml"));
         root2.getStylesheets().add(getClass().getResource("/ressources/style2.css").toExternalForm());
         Stage stage1 = new Stage();
-        stage1.setScene(new Scene(root2,400,400));
+        stage1.setScene(new Scene(root2,600,400));
         stage1.setTitle("Ajouter une musique");
         stage1.show();
     }
@@ -41,6 +42,10 @@ public class Controleur
         System.out.println(listeViewMusique);
     }
 
+
+
+
+
 //    public void initList (ActionEvent event) throws Exception
 //    {
 //
@@ -54,5 +59,19 @@ public class Controleur
 //        });
 //
 //    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

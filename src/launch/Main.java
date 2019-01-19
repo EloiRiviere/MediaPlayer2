@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import java.io.IOException;
+
+import test.TestOC;
 
 public class Main extends Application
 {
@@ -24,8 +27,9 @@ public class Main extends Application
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws ClassNotFoundException, IOException
     {
         launch(args);
+        //TestOC.test();
     }
 }

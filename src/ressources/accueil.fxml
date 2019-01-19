@@ -16,9 +16,9 @@
                                 <MenuItem text="Accueil"/>
                             </items>
                         </Menu>
-                        <Menu fx:id="gestionMusique" onAction="#gestionM" text="Gestion Musiques">
+                        <Menu fx:id="gestionMusique" text="Gestion Musiques">
                             <items>
-                                <MenuItem id="addMusique" text="Ajouter une musique" />
+                                <MenuItem id="addMusique" onAction="#gestionM" text="Ajouter une musique" />
                             </items>
                             <items>
                                 <MenuItem text="Supprimer une musique" />
@@ -52,15 +52,15 @@
     </top>
 
     <left>
-
         <ListView fx:id="listViewL" prefWidth="250">
-
-
+            <TextField text="Barre gauche"/>
+            <TextField text="Contient les albums"/>
         </ListView>
     </left>
 
     <right>
         <GridPane fx:id="paneMusicR" prefWidth="Infinity">
+            <TextField text="Barre droite, contient les musiques de l'album sélectionné"/>
             <rowConstraints>
                 <RowConstraints percentHeight="50" />
                 <RowConstraints percentHeight="50" />
@@ -69,7 +69,7 @@
                 <ColumnConstraints percentWidth="100" />
             </columnConstraints>
             <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <Slider prefHeight="20" prefWidth="550"/>
+
             </HBox>
         </GridPane>
     </right>
