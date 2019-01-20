@@ -10,11 +10,13 @@ import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eloir
  */
-public class Musique
+public class Musique implements Serializable
 {
     private final StringProperty titre = new SimpleStringProperty();
         public String getTitre() {return titre.get();}

@@ -23,13 +23,20 @@ public class Main extends Application
         primaryStage.show();
 
 }
+
+    public static void test() throws IOException, ClassNotFoundException
+    {
+        //TestOC.test();
+        //TestOC.testAlbum();
+        TestOC.testListeAlbum();
+    }
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ClassNotFoundException, IOException
+    public static void main(String[] args) throws IOException, ClassNotFoundException
     {
         launch(args);
-        //TestOC.test();
+        //test();
     }
 }

@@ -5,6 +5,7 @@
  */
 package modeles;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @author eloir
  */
 
-public class Album
+public class Album implements Serializable
 {
 
     String nom;
@@ -79,7 +80,10 @@ public class Album
     {
         this.pistes = new ArrayList<Musique>();
     }
-    
+
+
+
+
     @Override
     
     public String toString()

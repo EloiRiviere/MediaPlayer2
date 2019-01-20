@@ -5,11 +5,13 @@
  */
 package modeles;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eloir
  */
-public class Artiste
+public class Artiste implements Serializable
 {
     String nom;
 

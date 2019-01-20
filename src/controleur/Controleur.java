@@ -39,7 +39,7 @@ public class Controleur
     void initialize()
     {
         listeViewL.setItems(listeViewMusique);
-        System.out.println(listeViewMusique);
+        //System.out.println(listeViewMusique);
     }
 
 

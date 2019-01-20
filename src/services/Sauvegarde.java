@@ -1,6 +1,9 @@
 package services;
 
+import modeles.Album;
+
 import java.io.*;
+import java.util.List;
 
 public class Sauvegarde
 {
@@ -16,5 +19,29 @@ public class Sauvegarde
             transfert.writeObject(lu);
             System.out.println("Sauvegarde effectuée.");
         }
+    }
+
+    public static void sauvegardeAlbum(String cheminCible, Album album) throws FileNotFoundException, IOException, NullPointerException
+    {
+        try (ObjectOutputStream sauver =new ObjectOutputStream(new FileOutputStream(cheminCible)))
+        {
+            sauver.writeObject(album);
+        }
+//        catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+    }
+
+    public static void sauvegardeListeAlbum(String cheminCible, List<Album> listeAlbum) throws FileNotFoundException, IOException, NullPointerException
+    {
+        try (ObjectOutputStream sauver =new ObjectOutputStream(new FileOutputStream(cheminCible)))
+        {
+            sauver.writeObject(listeAlbum);
+        }
+//        catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
     }
 }
