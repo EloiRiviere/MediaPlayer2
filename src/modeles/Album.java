@@ -81,12 +81,7 @@ public class Album implements Serializable
         this.pistes = new ArrayList<Musique>();
     }
 
-
-
-
-    @Override
-    
-    public String toString()
+    public String afficher()
     {
         String desc = "Nom: "+getNom()+"\nArtiste: "+getArtiste()+"\nAnnée: "+getAnnee()+"\nPistes:\n  ";
         for (Musique m : getPistes())
@@ -95,6 +90,13 @@ public class Album implements Serializable
         }
         desc = desc+"\n";
         return desc;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return getNom();
     }
     
 }

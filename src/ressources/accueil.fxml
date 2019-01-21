@@ -52,9 +52,9 @@
     </top>
 
     <left>
-        <ListView fx:id="listViewL" prefWidth="250">
-            <TextField text="Barre gauche"/>
-            <TextField text="Contient les albums"/>
+        <ListView fx:id="listeViewL" prefWidth="250">
+            <!--<TextField text="Barre gauche"/>-->
+            <!--<TextField text="Contient les albums"/>-->
         </ListView>
     </left>
 

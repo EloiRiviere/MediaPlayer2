@@ -1,20 +1,29 @@
 package controleur;
 
+
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import modeles.Album;
 import test.TestMusique;
 
-public class Controleur
+public class Controleur implements Initializable
 {
     @FXML
     public void gestionM (ActionEvent event) throws Exception
@@ -27,23 +36,21 @@ public class Controleur
         stage1.show();
     }
 
-    //https://stackoverflow.com/questions/19588029/customize-listview-in-javafx-with-fxml#19632586
 
-
+    public List<Album> listeAlbums = TestMusique.getMediatheque();
+    public ObservableList<String> observableListMusique = FXCollections.observableArrayList((ArrayList)listeAlbums);
+    private ListProperty<String> listPropertyMusique = new SimpleListProperty<>(observableListMusique);
     @FXML
-    private List<Album> Mediatheque = TestMusique.getMediatheque();
-    public ObservableList<Album> listeViewMusique = FXCollections.observableArrayList(Mediatheque);
-    @FXML ListView listeViewL = new ListView();
-
+    ListView<String> listeViewL;
     @FXML
-    void initialize()
+    public void initialize(URL location, ResourceBundle ressources)
     {
-        listeViewL.setItems(listeViewMusique);
-        //System.out.println(listeViewMusique);
+        listeViewL.itemsProperty().bind(listPropertyMusique);
+        for (Album a: listeAlbums)
+        {
+            System.out.println(a.afficher());
+        }
     }
-
-
-
 
 
 //    public void initList (ActionEvent event) throws Exception
@@ -59,19 +66,5 @@ public class Controleur
 //        });
 //
 //    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
