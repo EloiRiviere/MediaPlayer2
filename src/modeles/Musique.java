@@ -36,7 +36,6 @@ public class Musique implements Serializable
     }
 
     @Override
-    
     public String toString()
     {
         return getTitre();

@@ -1,6 +1,5 @@
 package controleur;
 
-
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -10,13 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,55 +35,49 @@ public class Controleur implements Initializable
         stage1.show();
     }
 
-
-    public List<Album> listeAlbums = TestMusique.getMediatheque();
-    public ObservableList<Album> observableListMusique = FXCollections.observableArrayList((ArrayList)listeAlbums);
-    private ListProperty<Album> listPropertyMusique = new SimpleListProperty<>(observableListMusique);
-
-
-
     @FXML
     ListView<Album> listeViewL;
-
     @FXML
-    ListView<String> listeViewM;
-
+    ListView<Musique> listeViewM;
     @FXML
     TextArea textArea;
+
+    public List<Album> listeAlbums = TestMusique.getMediatheque();
+    public ObservableList<Album> observableListALbum = FXCollections.observableArrayList((ArrayList)listeAlbums);
+    private ListProperty<Album> listPropertyAlbum = new SimpleListProperty<>(observableListALbum);
 
     @FXML
     public void initialize(URL location, ResourceBundle ressources)
     {
-        listeViewL.itemsProperty().bind(listPropertyMusique);
+        listeViewL.itemsProperty().bind(listPropertyAlbum);
 
-        //listeViewL.itemsProperty().bind(listPropertyMusique);
-
-
-//        Test cell fact
-//        listeViewL.setCellFactory((param) -> {
-//            return new ListCell<Album>(){
-//                @Override
-//                protected void updateItem(Album a, boolean empty) {
-//                    super.updateItem(a, empty);
-//                    if (! empty) {
-//                        textProperty().bind(a.nomProperty());
-//                    } else {
-//                        textProperty().unbind();
-//                        setText("");
-//                    }
-//                }
-//            };
-//        });
 
         listeViewL.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
         {
             if(oldV!=null)
             {
-                textArea.textProperty().bindBidirectional(oldV.nomProperty());
+//                textArea.textProperty().bind(oldV.nomProperty());
+                System.out.println("baisé josé");
+                List<Musique> listeMusiques = newV.getPistes();
+                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
+                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
+                listeViewM.itemsProperty().bind(listPropertyMusiques);
             }
             if(newV!=null)
             {
-                textArea.textProperty().bindBidirectional(newV.nomProperty());
+//                textArea.textProperty().bind(newV.nomProperty());
+                List<Musique> listeMusiques = newV.getPistes();
+                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
+                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
+                listeViewM.itemsProperty().bind(listPropertyMusiques);
+            }
+            else
+            {
+                System.out.println("baisé josé");
+                List<Musique> listeMusiques = newV.getPistes();
+                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
+                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
+                listeViewM.itemsProperty().bind(listPropertyMusiques);
             }
         });
 

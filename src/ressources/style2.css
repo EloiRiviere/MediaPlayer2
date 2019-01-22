@@ -18,48 +18,6 @@
     -fx-opacity: 75%;
 }
 
-#listViewL
-{
-    -fx-background-color: black;
-    -fx-text-fill: seagreen;
-    -fx-opacity: 75%;
-}
-
-
-
-
-.list-view
-{
-    -fx-background-color: black;
-}
-
-.list-cell:filled:selected:focused, .list-cell:filled:selected {
-    -fx-text-fill: black;
-    -fx-background-color: mediumseagreen;
-    -fx-opacity: 100%;
-    -fx-border-color: black;
-    -fx-border-width: 1px;
-}
-
-.list-cell:even { /* <=== changed to even */
-    -fx-background-color: seagreen;
-    -fx-opacity: 95%;
-}
-
-.list-cell:filled:hover {
-    -fx-opacity: 100%;
-    -fx-text-fill: black;
-    -fx-background-color: mediumseagreen;
-}
-
-
-
-
-
-
-
-
-
 #sliderPaneB
 {
     -fx-background-color: black;
@@ -169,3 +127,49 @@
     -fx-text-fill: seagreen;
 }
 
+.list-view
+{
+    -fx-background-color: black;
+    -fx-opacity: 75%;
+}
+
+.list-cell
+{
+    -fx-background-color: seagreen;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-text-fill: black;
+    -fx-background-color: mediumseagreen;
+    -fx-opacity: 100%;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+.list-cell:even { /* <=== changed to even */
+    -fx-background-color: seagreen;
+    -fx-opacity: 95%;
+}
+
+.list-cell:filled:hover {
+    -fx-opacity: 100%;
+    -fx-text-fill: black;
+    -fx-background-color: mediumseagreen;
+}
+
+#volume
+{
+    -fx-padding: 10px, 0px, 0px, 0px;
+}
+
+.button:hover
+{
+    -fx-background-color: mediumseagreen;
+}
+
+.button:armed
+{
+    -fx-border-color: black;
+    -fx-padding: 3px;
+    -fx-border-width: 2px;
+}

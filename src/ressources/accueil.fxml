@@ -57,42 +57,22 @@
                     <items>
                         <TextField fx:id="barRecherche" />
                         <Button text="Rechercher" />
-                        <!--<Button text="Menu" onAction="#initList"/>-->
                     </items>
                 </ToolBar>
             </right>
         </BorderPane>
     </top>
 
+
     <left>
-        <ListView fx:id="listeViewL" prefWidth="250">
-            <!--<TextField text="Barre gauche"/>-->
-            <!--<TextField text="Contient les albums"/>-->
-        </ListView>
+        <ListView fx:id="listeViewL" prefWidth="250"/>
     </left>
 
+
     <right>
-        <GridPane fx:id="paneMusicR" prefWidth="Infinity">
-            <rowConstraints>
-                <RowConstraints percentHeight="100" />
-            </rowConstraints>
-            <columnConstraints>
-                <ColumnConstraints percentWidth="50" />
-                <ColumnConstraints percentWidth="50" />
-            </columnConstraints>
-            <!--<ListView fx:id="listeViewM" prefHeight="239.0" prefWidth="120.0">-->
-                <!--<TextField text="Barre gauche" />-->
-            <!--<opaqueInsets>-->
-               <!--<Insets />-->
-            <!--</opaqueInsets>-->
-            <!--<GridPane.margin>-->
-               <!--<Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />-->
-            <!--</GridPane.margin>-->
-            <!--</ListView>-->
-            <TextArea fx:id="textArea"/>
-            <!--<HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0"> </HBox> -->
-        </GridPane>
-    </right>
+            <ListView fx:id="listeViewM" prefWidth="Infinity"/>
+     </right>
+
 
     <bottom>
         <GridPane fx:id="sliderPaneB" gridLinesVisible="false">
@@ -106,7 +86,7 @@
             <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
                 <Slider fx:id="progression" prefHeight="20" prefWidth="550" />
             </HBox>
-            <HBox alignment="CENTER" style="-fx-background-color: black;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <HBox alignment="CENTER" style="-fx-background-color: black;" GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="5">
                 <Button fx:id="prec">
                     <graphic>
                         <ImageView fitHeight="48" fitWidth="48">
