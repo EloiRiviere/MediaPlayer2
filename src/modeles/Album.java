@@ -5,6 +5,10 @@
  */
 package modeles;
 
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +21,24 @@ import java.util.List;
 public class Album implements Serializable
 {
 
-    String nom;
+    private final StringProperty nom = new SimpleStringProperty();
+    public String getNom(){return nom.get();}
+    public void setNom(String nom) {this.nom.set(nom);}
+    public StringProperty nomProperty() {return nom;}
+
     List<Musique> pistes;
+
+//    private ObservableList<Musique> pistes = FXCollections.observableArrayList();
+//    private final ListProperty<Musique> liPistes=new SimpleListProperty<Musique>(pistes);
+//    private ObservableList<Musique> getLiPistes(){return liPistes.get();}
+//    public ListProperty<Musique> liPistesProperty(){return liPistes;}
+
     Artiste artiste;
-    int annee;
+
+    private final IntegerProperty annee = new SimpleIntegerProperty();
+    public Integer getAnnee(){return annee.get();}
+    public void setAnnee(Integer annee) {this.annee.set(annee);}
+    public IntegerProperty anneeProperty() {return annee;}
     
     public Album(String nom, Artiste artiste, int annee)
     {
@@ -30,21 +48,17 @@ public class Album implements Serializable
         setPistesVide();
     }
 
-    public String getNom() {
-        return nom;
-    }
 
     public Artiste getArtiste() {
         return artiste;
     }
 
-    public int getAnnee() {
-        return annee;
-    }
-
     public List<Musique> getPistes() {return pistes;}
 
-
+    public List<Musique> getLiMusique()
+    {
+        return this.pistes;
+    }
     
     public void ajouterPiste(Musique musique)
     {
@@ -61,24 +75,13 @@ public class Album implements Serializable
         this.pistes = allpistes;
     }
 
-    
-    
-    
-    private void setNom(String nom) {
-        this.nom = nom;
-    }
-
     private void setArtiste(Artiste artiste) {
         this.artiste = artiste;
     }
 
-    private void setAnnee(int annee) {
-        this.annee = annee;
-    }
-
     private void setPistesVide()
     {
-        this.pistes = new ArrayList<Musique>();
+        this.pistes = FXCollections.observableArrayList();
     }
 
     public String afficher()

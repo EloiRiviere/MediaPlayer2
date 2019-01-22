@@ -10,7 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -21,6 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import modeles.Album;
+import modeles.Musique;
 import test.TestMusique;
 
 public class Controleur implements Initializable
@@ -38,14 +41,56 @@ public class Controleur implements Initializable
 
 
     public List<Album> listeAlbums = TestMusique.getMediatheque();
-    public ObservableList<String> observableListMusique = FXCollections.observableArrayList((ArrayList)listeAlbums);
-    private ListProperty<String> listPropertyMusique = new SimpleListProperty<>(observableListMusique);
+    public ObservableList<Album> observableListMusique = FXCollections.observableArrayList((ArrayList)listeAlbums);
+    private ListProperty<Album> listPropertyMusique = new SimpleListProperty<>(observableListMusique);
+
+
+
     @FXML
-    ListView<String> listeViewL;
+    ListView<Album> listeViewL;
+
+    @FXML
+    ListView<String> listeViewM;
+
+    @FXML
+    TextArea textArea;
+
     @FXML
     public void initialize(URL location, ResourceBundle ressources)
     {
         listeViewL.itemsProperty().bind(listPropertyMusique);
+
+        //listeViewL.itemsProperty().bind(listPropertyMusique);
+
+
+//        Test cell fact
+//        listeViewL.setCellFactory((param) -> {
+//            return new ListCell<Album>(){
+//                @Override
+//                protected void updateItem(Album a, boolean empty) {
+//                    super.updateItem(a, empty);
+//                    if (! empty) {
+//                        textProperty().bind(a.nomProperty());
+//                    } else {
+//                        textProperty().unbind();
+//                        setText("");
+//                    }
+//                }
+//            };
+//        });
+
+        listeViewL.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
+        {
+            if(oldV!=null)
+            {
+                textArea.textProperty().bindBidirectional(oldV.nomProperty());
+            }
+            if(newV!=null)
+            {
+                textArea.textProperty().bindBidirectional(newV.nomProperty());
+            }
+        });
+
         for (Album a: listeAlbums)
         {
             System.out.println(a.afficher());
