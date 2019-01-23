@@ -9,8 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -22,7 +23,7 @@ import java.util.ResourceBundle;
 
 import modeles.Album;
 import modeles.Musique;
-import test.Player;
+import services.Player;
 import test.TestMusique;
 
 public class Controleur implements Initializable
@@ -42,44 +43,33 @@ public class Controleur implements Initializable
     ListView<Album> listeViewL;
     @FXML
     ListView<Musique> listeViewM;
-    @FXML
-    TextArea textArea;
 
     public List<Album> listeAlbums = TestMusique.getMediatheque();
     public ObservableList<Album> observableListALbum = FXCollections.observableArrayList((ArrayList)listeAlbums);
     private ListProperty<Album> listPropertyAlbum = new SimpleListProperty<>(observableListALbum);
+    public static Musique selectedMusique;
 
     @FXML
     public void initialize(URL location, ResourceBundle ressources)
     {
         listeViewL.itemsProperty().bind(listPropertyAlbum);
-
-
         listeViewL.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
         {
-            if(oldV!=null)
-            {
-//                textArea.textProperty().bind(oldV.nomProperty());
-                List<Musique> listeMusiques = newV.getPistes();
-                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
-                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
-                listeViewM.itemsProperty().bind(listPropertyMusiques);
-            }
-            if(newV!=null)
-            {
-//                textArea.textProperty().bind(newV.nomProperty());
-                List<Musique> listeMusiques = newV.getPistes();
-                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
-                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
-                listeViewM.itemsProperty().bind(listPropertyMusiques);
-            }
-            else
-            {
-                List<Musique> listeMusiques = newV.getPistes();
-                ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
-                ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
-                listeViewM.itemsProperty().bind(listPropertyMusiques);
-            }
+            List<Musique> listeMusiques = newV.getPistes();
+            ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
+            ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
+            listeViewM.itemsProperty().bind(listPropertyMusiques);
+        });
+
+        for (Album a: listeAlbums)
+        {
+            System.out.println(a.afficher());
+        }
+
+        listeViewM.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
+        {
+            selectedMusique = listeViewM.getSelectionModel().selectedItemProperty().getValue();
+            System.out.println(selectedMusique);
         });
 
         for (Album a: listeAlbums)
@@ -89,29 +79,59 @@ public class Controleur implements Initializable
     }
 
     @FXML
+    private Button prec;
+    @FXML
+    private Button pause;
+    @FXML
+    private Button play;
+    @FXML
+    private Button suiv;
+    @FXML
+    private Slider volume;
+    @FXML
+    private Slider progression;
+
+    @FXML
     public void play (ActionEvent event)
     {
-        try{
-            Player player = new Player();
+        try
+        {
+            if(Player.isInstance())
+            {
+                if(Player.getCurrentMusique() != selectedMusique)
+                {
+                    Player.stop();
+                    Player player = Player.getInstance(prec, pause, play, suiv, volume, progression, selectedMusique);
+                }
+                else
+                {
+                    Player.play();
+                }
+            }
+            else
+            {
+                Player player = Player.getInstance(prec, pause, play, suiv, volume, progression, selectedMusique);
+            }
         }
-        catch (IOException e){
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
 
-
-//    public void initList (ActionEvent event) throws Exception
-//    {
-//
-//        listeViewL.setCellFactory(new Callback<ListView<String>, javafx.scene.control.ListCell<String>>()
-//        {
-//            @Override
-//            public ListCell<String> call(ListView<String> listeViewL)
-//            {
-//                return new ListCell();
-//            }
-//        });
-//
-//    }
+    @FXML
+    public void stop (ActionEvent event)
+    {
+        try {
+            if (Player.isInstance())
+            {
+                Player.stop();
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 }
