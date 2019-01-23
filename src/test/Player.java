@@ -92,13 +92,10 @@ public class Player {
         mediaPlayer.play();
         mediaPlayer.volumeProperty().bind(volume.valueProperty());
 
-        mediaPlayer.setOnReady(new Runnable() {
-            @Override
-            public void run() {
-                progression.setMin(0.0);
-                progression.setValue(0.0);
-                progression.setMax(media.getDuration().toMinutes());
-            }
+        mediaPlayer.setOnReady(() -> {
+            progression.setMin(0.0);
+            progression.setValue(0.0);
+            progression.setMax(media.getDuration().toMinutes());
         });
 
         mediaPlayer.currentTimeProperty().addListener((observable,oldValue,newValue)->{
