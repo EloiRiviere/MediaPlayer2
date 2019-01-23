@@ -23,16 +23,21 @@ public class Musique implements Serializable
         public void setTitre(String titre) {this.titre.set(titre);}
         public StringProperty titreProperty(){return titre;}
         
-   private final FloatProperty duree = new SimpleFloatProperty();
+    private final FloatProperty duree = new SimpleFloatProperty();
         public float getDuree() {return duree.get();}
         public void setDuree(float duree) {this.duree.set(duree);}
         public FloatProperty dureeProperty(){return duree;}
-        
-           
-    public Musique(String titre, float duree)
+
+    private final StringProperty url = new SimpleStringProperty();
+        public String getUrl() {return url.get();}
+        public void setUrl(String url) {this.url.set(url);}
+        public StringProperty urlProperty(){return url;}
+
+    public Musique(String titre, float duree, String url)
     {
         setTitre(titre);
         setDuree(duree);
+        setUrl(url);
     }
 
     @Override

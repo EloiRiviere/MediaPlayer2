@@ -13,6 +13,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.ResourceBundle;
 
 import modeles.Album;
 import modeles.Musique;
+import test.Player;
 import test.TestMusique;
 
 public class Controleur implements Initializable
@@ -57,7 +60,6 @@ public class Controleur implements Initializable
             if(oldV!=null)
             {
 //                textArea.textProperty().bind(oldV.nomProperty());
-                System.out.println("baisé josé");
                 List<Musique> listeMusiques = newV.getPistes();
                 ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
                 ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
@@ -73,7 +75,6 @@ public class Controleur implements Initializable
             }
             else
             {
-                System.out.println("baisé josé");
                 List<Musique> listeMusiques = newV.getPistes();
                 ObservableList<Musique> observableListMusiques = FXCollections.observableArrayList((ArrayList)listeMusiques);
                 ListProperty<Musique> listPropertyMusiques = new SimpleListProperty<>(observableListMusiques);
@@ -84,6 +85,17 @@ public class Controleur implements Initializable
         for (Album a: listeAlbums)
         {
             System.out.println(a.afficher());
+        }
+    }
+
+    @FXML
+    public void play (ActionEvent event)
+    {
+        try{
+            Player player = new Player();
+        }
+        catch (IOException e){
+            e.printStackTrace();
         }
     }
 

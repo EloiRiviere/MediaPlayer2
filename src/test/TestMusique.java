@@ -22,7 +22,7 @@ import javax.print.attribute.standard.Media;
  */
 public class TestMusique
 {
-    private final ObjectProperty<Musique> mesMusiques = new SimpleObjectProperty<>(new Musique("Ties That Bind",3.19f));
+    private final ObjectProperty<Musique> mesMusiques = new SimpleObjectProperty<>(new Musique("Ties That Bind",3.19f,null));
     public final Musique getMusique(){return mesMusiques.get();}
     public final void setMusique(Musique value) {mesMusiques.set(value);}
     public ObjectProperty<Musique> mesMusiquesProperty() {return mesMusiques;}
@@ -40,17 +40,17 @@ public class TestMusique
         List<Musique> mount_the_mountain_musiques = new ArrayList<Musique>()
         {
             {
-                add(new Musique("Mount the Mountain", 6.27f));
-                add(new Musique("Sellbound", 3.34f));
-                add(new Musique("Hole in the Head", 4.29f));
-                add(new Musique("Kickin'My Dog", 3.55f));
-                add(new Musique("Procrastination", 3.36f));
-                add(new Musique("Sleepwalker", 3.33f));
-                add(new Musique("Epitome", 3.22f));
-                add(new Musique("Hard Way Down", 3.26f));
-                add(new Musique("Wild and Dead", 4.22f));
-                add(new Musique("Cold Liquor", 3.31f));
-                add(new Musique("Can't Get You Out of ...Head", 4.04f));
+                add(new Musique("Mount the Mountain", 6.27f,null));
+                add(new Musique("Sellbound", 3.34f,null));
+                add(new Musique("Hole in the Head", 4.29f,null));
+                add(new Musique("Kickin'My Dog", 3.55f,null));
+                add(new Musique("Procrastination", 3.36f,null));
+                add(new Musique("Sleepwalker", 3.33f,null));
+                add(new Musique("Epitome", 3.22f,null));
+                add(new Musique("Hard Way Down", 3.26f,null));
+                add(new Musique("Wild and Dead", 4.22f,null));
+                add(new Musique("Cold Liquor", 3.31f,null));
+                add(new Musique("Can't Get You Out of ...Head", 4.04f,null));
             }
         };
         mount_the_mountain.setAllPistes((ArrayList)mount_the_mountain_musiques);
@@ -61,17 +61,17 @@ public class TestMusique
         List<Musique> sword_song_musiques = new ArrayList<Musique>()
         {
             {
-                add(new Musique("Freja's Choice", 4.00f));
-                add(new Musique("Varangian", 3.41f));
-                add(new Musique("Forged In Iron", 5.38f));
-                add(new Musique("Born FOr Battle", 3.41f));
-                add(new Musique("Master Of The Land", 3.51f));
-                add(new Musique("Last One To Fall", 4.00f));
-                add(new Musique("Frost And Fire", 3.16f));
-                add(new Musique("Hurg", 2.07f));
-                add(new Musique("Every Day There's a Battle to Fight", 4.30f));
-                add(new Musique("In for the Kill", 3.35f));
-                add(new Musique("Stormbringer", 5.04f));
+                add(new Musique("Freja's Choice", 4.00f,null));
+                add(new Musique("Varangian", 3.41f,null));
+                add(new Musique("Forged In Iron", 5.38f,null));
+                add(new Musique("Born FOr Battle", 3.41f,null));
+                add(new Musique("Master Of The Land", 3.51f,null));
+                add(new Musique("Last One To Fall", 4.00f,null));
+                add(new Musique("Frost And Fire", 3.16f,null));
+                add(new Musique("Hurg", 2.07f,null));
+                add(new Musique("Every Day There's a Battle to Fight", 4.30f,null));
+                add(new Musique("In for the Kill", 3.35f,null));
+                add(new Musique("Stormbringer", 5.04f,null));
             }
         };
         sword_song.setAllPistes((ArrayList)sword_song_musiques);
@@ -91,20 +91,20 @@ public class TestMusique
         List<Musique> blackbird_musiques = new ArrayList<Musique>()
         {
             {
-                add(new Musique("Ties That Bind", 3.19f));
-                add(new Musique("Come To Life", 3.51f));
-                add(new Musique("Brand New Start", 4.56f));
-                add(new Musique("Buried Alive", 4.33f));
-                add(new Musique("Coming Home", 4.22f));
-                add(new Musique("Before Tomorrow Comes", 4.5f));
-                add(new Musique("Rise Today", 4.21f));
-                add(new Musique("Blackbird", 8.1f));
-                add(new Musique("One By One", 4.17f));
-                add(new Musique("Watch Over You", 4.16f));
-                add(new Musique("Break Me Down", 3.57f));
-                add(new Musique("White Knuckles", 4.25f));
-                add(new Musique("Wayward One", 4.48f));
-                add(new Musique("The Damage Done", 3.47f));
+                add(new Musique("Ties That Bind", 3.19f,null));
+                add(new Musique("Come To Life", 3.51f,null));
+                add(new Musique("Brand New Start", 4.56f,null));
+                add(new Musique("Buried Alive", 4.33f,null));
+                add(new Musique("Coming Home", 4.22f,null));
+                add(new Musique("Before Tomorrow Comes", 4.5f,null));
+                add(new Musique("Rise Today", 4.21f,null));
+                add(new Musique("Blackbird", 8.1f,null));
+                add(new Musique("One By One", 4.17f,null));
+                add(new Musique("Watch Over You", 4.16f,null));
+                add(new Musique("Break Me Down", 3.57f,null));
+                add(new Musique("White Knuckles", 4.25f,null));
+                add(new Musique("Wayward One", 4.48f,null));
+                add(new Musique("The Damage Done", 3.47f,null));
             }
         };
 
