@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import test.TestOC;
+import test.TestParser;
 
 public class Main extends Application
 {
@@ -28,7 +29,13 @@ public class Main extends Application
     {
         //TestOC.test();
         //TestOC.testAlbum();
-        TestOC.testListeAlbum();
+        //TestOC.testListeAlbum();
+
+        //TestParser.testAudioParser();
+        //TestParser.testFileParser();
+        //TestParser.testParser();
+        //TestParser.recuperationAlbums();
+        System.out.println(TestParser.getMusicDataMap(TestParser.getFoldersFilesMap()));
     }
     
     /**
@@ -37,6 +44,6 @@ public class Main extends Application
     public static void main(String[] args) throws IOException, ClassNotFoundException
     {
         launch(args);
-        //test();
+        test();
     }
 }

@@ -17,14 +17,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import modeles.Album;
 import modeles.Musique;
+import org.apache.tika.metadata.Metadata;
 import services.Player;
 import test.TestMusique;
+import test.TestParser;
 
 public class Controleur implements Initializable
 {
@@ -52,7 +52,12 @@ public class Controleur implements Initializable
     @FXML
     public void initialize(URL location, ResourceBundle ressources)
     {
+        Map<String, List<String>> folderFilesMAp = TestParser.getFoldersFilesMap();
+        Map<String, Metadata> musicDataMap = TestParser.getMusicDataMap(folderFilesMAp);
+
         listeViewL.itemsProperty().bind(listPropertyAlbum);
+
+
         listeViewL.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
         {
             List<Musique> listeMusiques = newV.getPistes();
@@ -61,10 +66,10 @@ public class Controleur implements Initializable
             listeViewM.itemsProperty().bind(listPropertyMusiques);
         });
 
-        for (Album a: listeAlbums)
-        {
-            System.out.println(a.afficher());
-        }
+//        for (Album a: listeAlbums)
+//        {
+//            System.out.println(a.afficher());
+//        }
 
         listeViewM.getSelectionModel().selectedItemProperty().addListener((observable,oldV,newV)->
         {
@@ -72,10 +77,10 @@ public class Controleur implements Initializable
             System.out.println(selectedMusique);
         });
 
-        for (Album a: listeAlbums)
-        {
-            System.out.println(a.afficher());
-        }
+//        for (Album a: listeAlbums)
+//        {
+//            System.out.println(a.afficher());
+//        }
     }
 
     @FXML

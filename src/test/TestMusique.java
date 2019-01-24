@@ -109,7 +109,6 @@ public class TestMusique
         };
 
         blackbird.setAllPistes((ArrayList)blackbird_musiques);
-
         return blackbird;
     }
 }
