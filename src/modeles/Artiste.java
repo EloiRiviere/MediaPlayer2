@@ -15,26 +15,13 @@ public class Artiste implements Serializable
 {
     String nom;
 
-    public Artiste(String nom)
-    {
-        setNom(nom);
-    }
+    public Artiste(String nom){setNom(nom);}
 
-    public String getNom() {
-        return nom;
-    }
 
-    
-    
-    private void setNom(String nom) {
-        this.nom = nom;
-    }
+    public String getNom(){return nom;}
+
+    private void setNom(String nom){this.nom = nom;}
     
     @Override
-    
-    public String toString()
-    {
-        return getNom();
-    }
-      
+    public String toString(){return getNom();}
 }

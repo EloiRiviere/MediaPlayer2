@@ -30,49 +30,9 @@ public class TestParser
             listMetadata.add(AudioParser.getMusicData(folderPath + "/" + filePath));
         }
 
-        System.out.println(listMetadata);
+        //System.out.println(listMetadata);
         return listMetadata;
     }
-
-    public static Map<String, List<String>> getFoldersFilesMap()
-    {
-        String musicFolderPath = "src/musiques";
-        Map <String, List<String>> folderFilesMap = new HashMap<>();
-        Map<String, Metadata> fileDataMap = new HashMap<>();
-
-        List<String> listFolderPath = FileParser.getListOfFolder(musicFolderPath);
-//        System.out.println(listFolderPath);
-        List<String> listFile;
-
-        for(String folder : listFolderPath)
-        {
-            listFile = FileParser.getListOfFiles(musicFolderPath + "/" + folder);
-//            System.out.println(folder + "\t" + listFile);
-            folderFilesMap.put(folder,listFile);
-        }
-
-//        System.out.println(folderFilesMap);
-
-        return folderFilesMap;
-    }
-
-
-    public static Map<String, Metadata> getMusicDataMap(Map <String, List<String>> folderFilesMap)
-    {
-        Map<String, Metadata> musicDataMap = new HashMap<>();
-//        List<String> locationFiles = new ArrayList<>();
-
-        for(String folder : folderFilesMap.keySet())
-        {
-            for (String file : folderFilesMap.get(folder))
-            {
-//                locationFiles.add(folder + "/" + file);
-                musicDataMap.put(folder + "/" + file,AudioParser.getMusicData("src/musiques/" + folder + "/" + file));
-            }
-        }
-        return musicDataMap;
-    }
-
 
     public static void recuperationAlbums()
     {

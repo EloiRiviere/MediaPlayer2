@@ -8,10 +8,12 @@ package modeles;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.tika.metadata.Metadata;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -20,27 +22,14 @@ import java.util.List;
 
 public class Album implements Serializable
 {
-
-    private final StringProperty nom = new SimpleStringProperty();
-    public String getNom(){return nom.get();}
-    public void setNom(String nom) {this.nom.set(nom);}
-    public StringProperty nomProperty() {return nom;}
-
+    String nom;
+    int annee;
     List<Musique> pistes;
-
-//    private ObservableList<Musique> pistes = FXCollections.observableArrayList();
-//    private final ListProperty<Musique> liPistes=new SimpleListProperty<Musique>(pistes);
-//    private ObservableList<Musique> getLiPistes(){return liPistes.get();}
-//    public ListProperty<Musique> liPistesProperty(){return liPistes;}
-
     Artiste artiste;
+    String genre;
+    int numeroPiste;
 
-    private final IntegerProperty annee = new SimpleIntegerProperty();
-    public Integer getAnnee(){return annee.get();}
-    public void setAnnee(Integer annee) {this.annee.set(annee);}
-    public IntegerProperty anneeProperty() {return annee;}
-    
-    public Album(String nom, Artiste artiste, int annee)
+    public Album(String nom, Artiste artiste,int annee)
     {
         setNom(nom);
         setArtiste(artiste);
@@ -48,45 +37,35 @@ public class Album implements Serializable
         setPistesVide();
     }
 
-
-    public Artiste getArtiste() {
-        return artiste;
-    }
-
-    public List<Musique> getPistes() {return pistes;}
-
-    public List<Musique> getLiMusique()
+    public Album(String nom, Artiste artiste, int annee, String genre, int numeroPiste)
     {
-        return this.pistes;
-    }
-    
-    public void ajouterPiste(Musique musique)
-    {
-        pistes.add(musique);
-    }
-    
-    public void supprimerPiste(Musique musique)
-    {
-        pistes.remove(musique);
-    }
-    
-    public void setAllPistes(ArrayList<Musique> allpistes)
-    {
-        this.pistes = allpistes;
+        setNom(nom);
+        setArtiste(artiste);
+        setAnnee(annee);
+        setGenre(genre);
+        setNumeroPiste(numeroPiste);
+        setPistesVide();
     }
 
-    private void setArtiste(Artiste artiste) {
-        this.artiste = artiste;
-    }
+    public Artiste getArtiste(){return this.artiste;}
+    public List<Musique> getPistes(){return this.pistes;}
+    public int getAnnee(){return this.annee;}
+    public String getNom(){return this.nom;}
+    public String getGenre(){return this.genre;}
+    public int getNumeroPiste(){return numeroPiste;}
 
-    private void setPistesVide()
-    {
-        this.pistes = FXCollections.observableArrayList();
-    }
+
+    private void setAnnee(int annee){this.annee = annee;}
+    private void setNom(String nom){this.nom = nom;}
+    public void setAllPistes(ArrayList<Musique> allpistes){this.pistes = allpistes;}
+    private void setArtiste(Artiste artiste){this.artiste = artiste;}
+    private void setPistesVide(){this.pistes = FXCollections.observableArrayList();}
+    private void setGenre(String genre){this.genre = genre;}
+    private void setNumeroPiste(int numeroPiste){this.numeroPiste = numeroPiste;}
 
     public String afficher()
     {
-        String desc = "Nom: "+getNom()+"\nArtiste: "+getArtiste()+"\nAnnée: "+getAnnee()+"\nPistes:\n  ";
+        String desc = "Nom: "+getNom()+"\nArtiste: "+getArtiste()+"\nPistes:\n  ";
         for (Musique m : getPistes())
         {
             desc = desc+m+"\n  ";
@@ -95,11 +74,59 @@ public class Album implements Serializable
         return desc;
     }
 
+    public void ajouterPiste(Musique musique){pistes.add(musique);}
+    public void supprimerPiste(Musique musique){pistes.remove(musique);}
 
     @Override
     public String toString()
     {
         return getNom();
     }
-    
+
+    public static List<Album> getAlbum(Map<String, Metadata> metaDataMap)
+    {
+        List<Album> listeAlbums = new ArrayList<>();
+        Metadata metadata;
+        Album album = null;
+        String nom = null;
+        Artiste artiste;
+        int annee = 0;
+        List<Musique> pistes = new ArrayList<>();
+        String genre;
+        int numeroPiste = 0;
+
+        for(String key: metaDataMap.keySet())
+        {
+            metadata = metaDataMap.get(key);
+            if(metadata.get("xmpDM:duration") != null)
+            {
+                if(nom != null || nom != metadata.get("xmpDM:album"))
+                {
+                    listeAlbums.add(album);
+                    pistes = new ArrayList<>();
+                    nom = metadata.get("xmpDM:album");
+                    artiste = new Artiste(metadata.get("xmpDM:artist"));
+                    try{annee = Integer.parseInt(metadata.get("xmpDM:releaseDate"));}
+                    catch(NumberFormatException e){System.out.println("Erreur annee pour " + metadata.get("title") + " : valeur: " + metadata.get("xmpDM:releaseDate"));}
+                    genre = metadata.get("xmpDM:genre");
+                    try{numeroPiste = Integer.parseInt(metadata.get("xmpDM:trackNumber"));}
+                    catch(NumberFormatException e2){System.out.println(metadata.get("Erreur annee pour " + metadata.get("title") + " : valeur: " + "xmpDM:trackNumber"));}
+
+                    album = new Album(nom, artiste, annee, genre, numeroPiste);
+                }
+
+                try{pistes.add(new Musique(metadata.get("title"), Float.parseFloat(metadata.get("xmpDM:duration")) , key));}
+                catch(NumberFormatException e2){System.out.println("Erreur annee pour " + metadata.get("title") + " : valeur: " + metadata.get("xmpDM:duration"));}
+            }
+        }
+        return listeAlbums;
+    }
+
+    public static void letMeSee(List<Album> listeAlbums)
+    {
+        for(Album album : listeAlbums)
+        {
+            if(album != null){System.out.println(album.afficher());}
+        }
+    }
 }

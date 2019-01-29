@@ -6,7 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.List;
 
+import modeles.Album;
+import services.AudioParser;
+import services.FileParser;
 import test.TestOC;
 import test.TestParser;
 
@@ -35,7 +39,13 @@ public class Main extends Application
         //TestParser.testFileParser();
         //TestParser.testParser();
         //TestParser.recuperationAlbums();
-        System.out.println(TestParser.getMusicDataMap(TestParser.getFoldersFilesMap()));
+
+//        System.out.println(FileParser.getFoldersFilesMap("src/musiques"));
+//        System.out.println("---------------------------------");
+//        System.out.println(AudioParser.getMusicDataMap(FileParser.getFoldersFilesMap("src/musiques")));
+
+//        System.out.println(Album.getAlbum(AudioParser.getMusicDataMap(FileParser.getFoldersFilesMap("src/musiques"))));
+        Album.letMeSee(Album.getAlbum(AudioParser.getMusicDataMap(FileParser.getFoldersFilesMap("src/musiques"))));
     }
     
     /**

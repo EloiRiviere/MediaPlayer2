@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
@@ -39,22 +42,25 @@ public class AudioParser
 
             return metadata;
         }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        catch (SAXException e)
-        {
-            e.printStackTrace();
-        }
-        catch (TikaException e)
-        {
-            e.printStackTrace();
-        }
+        catch (FileNotFoundException e){e.printStackTrace();}
+        catch (IOException e){e.printStackTrace();}
+        catch (SAXException e){e.printStackTrace();}
+        catch (TikaException e){e.printStackTrace();}
         return null;
     }
+
+    public static Map<String, Metadata> getMusicDataMap(Map <String, List<String>> folderFilesMap)
+    {
+        Map<String, Metadata> musicDataMap = new HashMap<>();
+
+        for(String folder : folderFilesMap.keySet())
+        {
+            for (String file : folderFilesMap.get(folder))
+            {
+                musicDataMap.put(folder + "/" + file,AudioParser.getMusicData("src/musiques/" + folder + "/" + file));
+            }
+        }
+        return musicDataMap;
+    }
+
 }

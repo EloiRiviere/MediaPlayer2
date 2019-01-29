@@ -5,11 +5,6 @@
  */
 package modeles;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import java.io.Serializable;
 
 /**
@@ -18,32 +13,25 @@ import java.io.Serializable;
  */
 public class Musique implements Serializable
 {
-    private final StringProperty titre = new SimpleStringProperty();
-        public String getTitre() {return titre.get();}
-        public void setTitre(String titre) {this.titre.set(titre);}
-        public StringProperty titreProperty(){return titre;}
-        
-    private final FloatProperty duree = new SimpleFloatProperty();
-        public float getDuree() {return duree.get();}
-        public void setDuree(float duree) {this.duree.set(duree);}
-        public FloatProperty dureeProperty(){return duree;}
+    private String titre;
+    private float duree;
+    private String url;
 
-    private final StringProperty url = new SimpleStringProperty();
-        public String getUrl() {return url.get();}
-        public void setUrl(String url) {this.url.set(url);}
-        public StringProperty urlProperty(){return url;}
-
-    public Musique(String titre, float duree, String url)
+    public Musique(String titre, float duree , String url)
     {
         setTitre(titre);
         setDuree(duree);
         setUrl(url);
     }
 
+    private void setTitre(String titre){this.titre = titre;}
+    private void setDuree(float duree){this.duree = duree;}
+    private void setUrl(String url){this.url = url;}
+
+    public String getTitre(){return this.titre;}
+    public float getDuree(){return this.duree;}
+    public String getUrl(){return this.url;}
+
     @Override
-    public String toString()
-    {
-        return getTitre();
-    }
-    
+    public String toString(){return getTitre();}
 }

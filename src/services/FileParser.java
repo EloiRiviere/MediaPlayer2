@@ -1,5 +1,7 @@
 package services;
 
+import org.apache.tika.metadata.Metadata;
+
 import java.io.File;
 import java.util.*;
 
@@ -34,5 +36,18 @@ public class FileParser
             }
         }
         return listFolder;
+    }
+
+    public static Map<String, List<String>> getFoldersFilesMap(String musicFolderPath)
+    {
+        Map <String, List<String>> folderFilesMap = new HashMap<>();
+        List<String> listFolderPath = FileParser.getListOfFolder(musicFolderPath);
+
+        for(String folder : listFolderPath)
+        {
+            folderFilesMap.put(folder,FileParser.getListOfFiles(musicFolderPath + "/" + folder));
+        }
+
+        return folderFilesMap;
     }
 }

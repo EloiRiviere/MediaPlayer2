@@ -22,6 +22,8 @@ import java.util.*;
 import modeles.Album;
 import modeles.Musique;
 import org.apache.tika.metadata.Metadata;
+import services.AudioParser;
+import services.FileParser;
 import services.Player;
 import test.TestMusique;
 import test.TestParser;
@@ -52,8 +54,8 @@ public class Controleur implements Initializable
     @FXML
     public void initialize(URL location, ResourceBundle ressources)
     {
-        Map<String, List<String>> folderFilesMAp = TestParser.getFoldersFilesMap();
-        Map<String, Metadata> musicDataMap = TestParser.getMusicDataMap(folderFilesMAp);
+        Map<String, List<String>> folderFilesMAp = FileParser.getFoldersFilesMap("src/musiques");
+        Map<String, Metadata> musicDataMap = AudioParser.getMusicDataMap(folderFilesMAp);
 
         listeViewL.itemsProperty().bind(listPropertyAlbum);
 
